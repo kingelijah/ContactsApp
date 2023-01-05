@@ -1,13 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ContactsApp.Models
+﻿namespace ContactsApp.ViewModel
 {
-    public class EditHistory
+    public class EditHistoryViewModel
     {
         public int Id { get; set; }
-        [Required]
         public DateTime ModifiedDate { get; set; }
-        [Required]
         public int ContactId { get; set; }
     }
 }

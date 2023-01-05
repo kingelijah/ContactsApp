@@ -1,9 +1,13 @@
-using ContactsApp.Contracts;
-using ContactsApp.Models;
-using ContactsApp.Services;
+using ContactsApp.ViewModel;
+using DataAccess.EFCore;
+using DataAccess.EFCore.Repositories;
+using Domain;
+using Domain.Interfaces;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
+using System;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
@@ -11,15 +15,20 @@ logger.Debug("init main");
 try
 {
     var builder = WebApplication.CreateBuilder(args);
-    builder.Services.AddDbContext<ContactsAppContext>(options =>
+    builder.Services.AddDbContext<ApplicationContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("ContactsAppContext") ?? throw new InvalidOperationException("Connection string 'ContactsAppContext' not found.")));
 
     // Add services to the container.
 
     builder.Services.AddControllers();
-    builder.Services.AddScoped<IContactRepository, ContactRepository>();
+    builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+    builder.Services.AddTransient<IContactRepository, ContactRepository>();
+    builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+    builder.Services.AddScoped<IValidator<ContactViewModel>, ContactValidator>();
+
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     builder.Services.AddSwaggerGen();
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();

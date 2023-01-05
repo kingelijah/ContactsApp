@@ -1,11 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "2V3WDqPX7QpnPauRGdb387QMl9QrKsWQXqcMhFo/7C3VdJLK8BsMt9bw7RnUftPyn+uaCnm66B61x6JNUNc+nw==",
+  "dgSpecHash": "2BPrQYk5ToG7ke3orHlG88syvWGuM/3FsbdUj1GgFcJNAHwBJP00e4yPLHv/iy1pqITg9vz3pGY441jTkudDkw==",
   "success": true,
   "projectFilePath": "C:\\Users\\ealeakhue\\Desktop\\ContactsApp\\ContactsApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ealeakhue\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\ealeakhue\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\ealeakhue\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
+    "C:\\Users\\ealeakhue\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
+    "C:\\Users\\ealeakhue\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.1\\fluentvalidation.dependencyinjectionextensions.11.2.1.nupkg.sha512",
     "C:\\Users\\ealeakhue\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\ealeakhue\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\ealeakhue\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\ealeakhue\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\ealeakhue\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",

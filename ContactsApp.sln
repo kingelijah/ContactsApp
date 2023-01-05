@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp", "ContactsApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApp.Test", "..\ContactApp.Test\ContactApp.Test.csproj", "{556BE4F8-81EC-46D2-9B27-33F3BE850482}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.EFCore", "..\DataAccess.EFCore\DataAccess.EFCore.csproj", "{5D3C89D4-6D7D-4155-9896-3B360DC716DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Domain\Domain.csproj", "{42392629-6948-4E93-B080-475EC03C7CAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{556BE4F8-81EC-46D2-9B27-33F3BE850482}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{556BE4F8-81EC-46D2-9B27-33F3BE850482}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{556BE4F8-81EC-46D2-9B27-33F3BE850482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3C89D4-6D7D-4155-9896-3B360DC716DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3C89D4-6D7D-4155-9896-3B360DC716DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3C89D4-6D7D-4155-9896-3B360DC716DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3C89D4-6D7D-4155-9896-3B360DC716DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42392629-6948-4E93-B080-475EC03C7CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42392629-6948-4E93-B080-475EC03C7CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42392629-6948-4E93-B080-475EC03C7CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42392629-6948-4E93-B080-475EC03C7CAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
