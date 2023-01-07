@@ -12,7 +12,7 @@ using System;
 
 namespace ContactsApp.Controllers
 {
-    // <summary>
+    /// <summary>
     /// The controller groups together all methods related to Contacts.
     /// </summary>
     [ApiController]
@@ -30,47 +30,47 @@ namespace ContactsApp.Controllers
             _mapper = mapper;
             _validator = validator;
         }
-        // <summary>
+        /// <summary>
         /// Method to get contact by Id.
         /// </summary>
         [HttpGet("{id}")]
         public async Task<ActionResult<ContactViewModel>> GetContact(int id)
         {          
             var contact = await _unitOfWork.Contacts.GetByIdAsync(id);
-            if (contact == null)
+            if (contact is null)
                 return NotFound();
             
             return _mapper.Map<ContactViewModel>(contact);
         }
 
-        // <summary>
+        /// <summary>
         /// Method to get edit history by Id.
         /// </summary>
         [HttpGet("GetEditHistory/{id}")]
-        public async Task<ActionResult<IEnumerable<EditHistoryViewModel>>> GetEditHistory(int id)
+        public ActionResult<IEnumerable<EditHistoryViewModel>> GetEditHistory(int id)
         {
-            var histories = await _unitOfWork.histories.FindAsync(e => e.ContactId == id);
-            if (histories == null)
+            var histories = _unitOfWork.histories.GetHistory(id);
+            if (histories is null)
                 return NotFound();
 
             return _mapper.Map<IEnumerable<EditHistoryViewModel>>(histories).ToList();
         }
 
-        // <summary>
+        /// <summary>
         /// Method to get all contacts
         /// </summary>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ContactViewModel>>> GetContacts()
+        public ActionResult<IEnumerable<ContactViewModel>> GetContacts()
         {
     
-            var contacts = await _unitOfWork.Contacts.GetAllAsync();
-            if (contacts == null)
+            var contacts = _unitOfWork.Contacts.GetAll();
+            if (contacts is null)
                 return NotFound();
             return _mapper.Map<IEnumerable<ContactViewModel>>(contacts).ToList();
 
         }
 
-        // <summary>
+        /// <summary>
         /// method to post contact
         /// </summary>
         [HttpPost]
@@ -96,7 +96,7 @@ namespace ContactsApp.Controllers
            
         }
 
-        // <summary>
+        /// <summary>
         /// method to update contact
         /// </summary>
         [HttpPut]
@@ -109,30 +109,23 @@ namespace ContactsApp.Controllers
                 return BadRequest(result.Errors);
             }
             
-            await _unitOfWork.Contacts.UpdateAsync(_mapper.Map<Contact>(contactViewModel));
-            _unitOfWork.Complete();
-           await SaveHistory(contactViewModel);
-            return NoContent();
+           _unitOfWork.Contacts.Update(_mapper.Map<Contact>(contactViewModel));
+           await _unitOfWork.histories.AddEditAsync(contactViewModel.Id);
+           _unitOfWork.Complete();
+           return NoContent();
         }
 
-        // <summary>
+        /// <summary>
         /// Method to delete contact
         /// </summary>
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteContact(int id)
         {
             var contact = await _unitOfWork.Contacts.GetByIdAsync(id);
-            await _unitOfWork.Contacts.RemoveAsync(contact);
+            _unitOfWork.Contacts.Remove(contact);
             _unitOfWork.Complete();
             return NoContent();
         }
-        private async Task SaveHistory(ContactViewModel contactViewModel)
-        {
-            EditHistory hist = new EditHistory();
-            hist.ContactId = contactViewModel.Id;
-            hist.ModifiedDate = DateTime.Now;
-             await _unitOfWork.histories.AddAsync(hist);
-            _unitOfWork.Complete();
-        }
+      
     }
 }
